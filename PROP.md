@@ -4,7 +4,8 @@ y ha pasado suficiente tiempo como para que los sobrevivientes se adaptaran.
 Los objetivos a cumplir irán cambiando en base a las decisiones que se vayan tomando a lo
 largo del juego, cada decisión influye en lo que pueda pasar más adelante. Pero basicamente el jugador
 tendrá que recolectar ciertas cosas para poder seguir avanzando, llegará a algunas partes donde
-le pedirán un objeto en específico avanzar, etc.
+le pedirán un objeto en específico avanzar, ir ganando experiencia en batallas, obteniendo logros en base
+a su rendimiento, etc.
 
 El manual del juego, consiste basicamente en que se darán una lista de opciones (2-3) a las situaciones
 que vayan ocurriendo, la historia podrá ir cambiando en base a las decisiones que tome el jugador.
