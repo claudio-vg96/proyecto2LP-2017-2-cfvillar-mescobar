@@ -1,22 +1,44 @@
 package equipamento;
 
-public class Armas extends Equipamento {
-    private int danio;
+public class Armas implements Equipamento {
+    private int dano;
+    private String nombre;
+    private int nivel;
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    @Override
+    public int getNivel() {
+        return nivel;
+    }
 
     public Armas(){
 
     }
 
-    public Armas(int level){
-        super.setNivel(level);
-        danio = 10 + level;
+    public Armas (int level){
+        this.setNivel(level);
+        dano = 10 + level;
     }
 
-    public void setDaño(int danio){
-        this.danio = danio + super.getNivel()*5;
+    public void setDano(int dano){
+        this.dano = dano + this.getNivel()*5;
     }
 
-    public int getDaño(){
-        return danio;
+    public int getDano(){
+        return dano;
     }
 }
