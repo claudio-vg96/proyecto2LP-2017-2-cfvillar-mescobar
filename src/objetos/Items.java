@@ -1,7 +1,9 @@
 package objetos;
 
-/**
- * Created by claudio on 12-11-17.
- */
 public interface Items {
+    public void setDescripcion(String descripcion);
+    public String getDescripcion();
+    public void setNombre(String nombre);
+    public String getNombre();
+
 }
