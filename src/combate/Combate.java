@@ -42,7 +42,7 @@ public class Combate {
             System.out.println(npc.getNombre() + " inflinge " + (npc.getArma().getDaño() - usuario.getArmadura().getResistencia()) + " de daño");
             if (usuario.getSalud() <= 0) {
                 System.out.println("Escape fallido " + usuario.getNombre() + " a muerto");
-                resultado_pelea = false;
+                resultado_pelea = false;https://www.youtube.com/playlist?list=PL602060AB32FC864B
                 break;
             }
             if (npc.getSalud() <= 0) {
