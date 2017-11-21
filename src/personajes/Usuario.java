@@ -27,7 +27,7 @@ public class Usuario extends Personaje{
         armadura = armadura_inicial;
 
         Armas nudillos = new Armas();
-        nudillos.setDaño(25);
+        nudillos.setDano(25);
         nudillos.setNombre("Nudillos");
         nudillos.setNivel(1);
 
