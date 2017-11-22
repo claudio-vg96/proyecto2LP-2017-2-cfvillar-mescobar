@@ -12,11 +12,11 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(" ######## BIENVENIDOOOOS ######## ");
-        System.out.println("Ingresa el nombre de tu personaje");
+        System.out.println("Ingresa el nombre de tu personaje:");
         Scanner name = new Scanner(System.in);
         String nombre = name.nextLine();
         Usuario user = new Usuario();
         user.setNombre(nombre);
-
+        System.out.println(nombre+" eres la ultima persona en la tierra.");
     }
 }

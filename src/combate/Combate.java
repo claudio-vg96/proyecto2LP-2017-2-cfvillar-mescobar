@@ -21,8 +21,8 @@ public class Combate {
                     System.out.println(npc.getNombre() + " usa una pocion, curandose por " + potencia_pocion_npc);
                 }
             }
-            npc.restarSalud(usuario.getArma().getDaño() - npc.getResistencia());
-            System.out.println(usuario.getNombre() + " inflinge " + (usuario.getArma().getDaño()
+            npc.restarSalud(usuario.getArma().getDano() - npc.getResistencia());
+            System.out.println(usuario.getNombre() + " inflinge " + (usuario.getArma().getDano()
                     - npc.getResistencia()) + " de daño");
 
             if (usuario.getSalud() <= 0) {
@@ -38,11 +38,11 @@ public class Combate {
 
             System.out.println("La vida actual de " + npc.getNombre() + " es " + (npc.getSalud()));
 
-            usuario.restarSalud(npc.getArma().getDaño() - usuario.getArmadura().getResistencia()); //quita vida al usuario
-            System.out.println(npc.getNombre() + " inflinge " + (npc.getArma().getDaño() - usuario.getArmadura().getResistencia()) + " de daño");
+            usuario.restarSalud(npc.getArma().getDano() - usuario.getArmadura().getResistencia()); //quita vida al usuario
+            System.out.println(npc.getNombre() + " inflinge " + (npc.getArma().getDano() - usuario.getArmadura().getResistencia()) + " de daño");
             if (usuario.getSalud() <= 0) {
                 System.out.println("Escape fallido " + usuario.getNombre() + " a muerto");
-                resultado_pelea = false;https://www.youtube.com/playlist?list=PL602060AB32FC864B
+                resultado_pelea = false;
                 break;
             }
             if (npc.getSalud() <= 0) {
