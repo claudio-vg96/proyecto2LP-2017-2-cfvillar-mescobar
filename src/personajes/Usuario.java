@@ -13,7 +13,7 @@ public class Usuario extends Personaje{
     private Armaduras armadura;
     private ArrayList<Items> equipaje;
 
-    public Usuario(){
+    public Usuario(){   //Constructor
 
         this.setNivel(1);
         equipaje = new ArrayList<>();

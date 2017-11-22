@@ -26,7 +26,7 @@ Experiencia -> 0/1000
 Ataque -> 100
 Defensa -> 50 
 Armadura -> 0
-Velocidad ->10
+
 
 **Mapa:** 
 Primer Escenario -> Alcantarillas
