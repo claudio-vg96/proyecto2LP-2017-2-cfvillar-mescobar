@@ -1,6 +1,7 @@
 package com.company;
 
 import combate.Combate;
+import equipamento.Armas;
 import equipamento.Equipamento;
 import objetos.Llave;
 import personajes.*;
@@ -17,6 +18,7 @@ public class Main {
         String nombre = name.nextLine();
         Usuario user = new Usuario();
         user.setNombre(nombre);
+        user.setSalud(1000);
 
         //Nivel 1 -> Alcantarillas
         System.out.println(nombre+" eres la ultima persona en la tierra. Has despertado de un largo sueño y la humanidad"+
@@ -25,6 +27,32 @@ public class Main {
                 " aquí para aconsejarte acerca de tu futuro.\nNo tienes provisiones y tienes que dejar estas" +
                 " alcantarillas si quieres sobrevivir.\nMas adelante te encontraras con diversos enemigos de origen" +
                 " desconocido, por lo cual te entrego estas herramientas que te ayudaran a vencerlos.");
+        System.out.println("Escoge un arma:");
+        Scanner arma = new Scanner(System.in);
+        System.out.println("1: Espada del viejo mundo"); // 200 de daño
+        System.out.println("2: Hacha del destino final"); //150 de daño y 100 de armadura
+        System.out.println("3: Arco y flechas"); //100 de daño y 500 de salud
+
+        int opcion = arma.nextInt();
+        if(opcion == 1){
+            Armas espada = new Armas();
+            espada.setNombre("Espada del viejo mundo");
+            espada.setDano(200);
+            espada.setNivel(1);
+        }
+        else if (opcion == 2){
+            Armas hacha = new Armas();
+            hacha.setNombre("Hacha del destino final");
+            hacha.setDano(150);
+            hacha.setNivel(1);
+        }
+        else if (opcion == 3){
+            Armas arco = new Armas();
+            arco.setNombre("Arco y flechas");
+            arco.setDano(100);
+            arco.setNivel(1);
+        }
+
 
         //Se le entregan la espada, el chaleco y las botas. Se le preguntara al jugador que quiere hacer con ellas
         //Si recogerlas, o no recogerlas. Si no las recoge el jugador no podra dar cara a los enemigos y su muerte sera
