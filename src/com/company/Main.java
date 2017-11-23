@@ -29,20 +29,20 @@ public class Main {
                 " desconocido, por lo cual te entrego estas herramientas que te ayudaran a vencerlos.");
         System.out.println("Escoge un arma:");
         Scanner arma = new Scanner(System.in);
-        System.out.println("1: Espada del viejo mundo"); // 200 de daño
-        System.out.println("2: Hacha del destino final"); //150 de daño y 100 de armadura
-        System.out.println("3: Arco y flechas"); //100 de daño y 500 de salud
+        System.out.println("1: Espada de Fuego"); // 250 de daño
+        System.out.println("2: Hacha del Diablo"); //150 de daño y 100 de armadura
+        System.out.println("3: Arco y flechas"); //100 de daño y 150 de salud
 
         int opcion = arma.nextInt();
         if(opcion == 1){
             Armas espada = new Armas();
-            espada.setNombre("Espada del viejo mundo");
-            espada.setDano(200);
+            espada.setNombre("Espada de Fuego");
+            espada.setDano(250);
             espada.setNivel(1);
         }
         else if (opcion == 2){
             Armas hacha = new Armas();
-            hacha.setNombre("Hacha del destino final");
+            hacha.setNombre("Hacha del Diablo");
             hacha.setDano(150);
             hacha.setNivel(1);
         }
