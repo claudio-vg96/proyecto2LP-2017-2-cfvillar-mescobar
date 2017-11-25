@@ -2,16 +2,16 @@ package com.company;
 
 import combate.Combate;
 import equipamento.Armas;
-import equipamento.Equipamento;
 import objetos.Llave;
 import personajes.*;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(" BIENVENIDOS 'A Reptiles y Mujerzuelas'");
         System.out.println("Ingresa el nombre de tu personaje:");
         Scanner name = new Scanner(System.in);
@@ -19,20 +19,33 @@ public class Main {
         Usuario user = new Usuario();
         user.setNombre(nombre);
         user.setSalud(1000);
+        //List<String> mapa = new ArrayList<>();
+        //Map<String, List<String>> mapa = new LinkedHashMap<String, List<String>>();
+
+
+        // DEFINIMOS ZONAS CON SUS ENEMIGOS
+        Map<String, List> enemigos = new HashMap<String, List>();
+        enemigos.put("Alcantarillas",Arrays.asList("Cocodrilo","Lagarto Mayor","Serpiente"));
+        enemigos.put("Ciudad Destruida",Arrays.asList("Elementos","Ciudad","Destruida"));
+        enemigos.put("Castillo Destruido",Arrays.asList("Elementos","Castillo","Destruido"));
+        enemigos.put("Sala del Castillo Destruido",Arrays.asList("Elementos","Sala","Castillo","Destruido"));
+
+        // DEFINIMOS ZONAS CON SUS MISIONES
+
+        Map <String,List> misiones = new HashMap<String, List>();
+        misiones.put("Alcantarillas", Arrays.asList("Encontrar un arma","Derrotar al Lagarto Anciano"+
+                "Encontrar chaleco de kevlar"));
 
         //Nivel 1 -> Alcantarillas
         System.out.println(nombre+" eres la ultima persona en la tierra. Has despertado de un largo sueño y la humanidad"+
                 " como la conoces ha llegado a su fin.\n" +
                 "Soy el perro de tu ta-tara-abuelo y he venido"+
                 " aquí para aconsejarte acerca de tu futuro.\nNo tienes provisiones y tienes que dejar estas" +
-                " alcantarillas si quieres sobrevivir.\nMas adelante te encontraras con diversos enemigos de origen" +
-                " desconocido, por lo cual te entrego estas herramientas que te ayudaran a vencerlos.");
-        System.out.println("Escoge un arma:");
-        Scanner arma = new Scanner(System.in);
+                " alcantarillas si quieres sobrevivir.\n Adelante, que comience tu aventura!");
+        /*
         System.out.println("1: Espada del viejo mundo"); // 200 de daño
         System.out.println("2: Hacha del destino final"); //150 de daño y 100 de armadura
         System.out.println("3: Arco y flechas"); //100 de daño y 500 de salud
-
         int opcion = arma.nextInt();
         if(opcion == 1){
             Armas espada = new Armas();
@@ -52,6 +65,82 @@ public class Main {
             arco.setDano(100);
             arco.setNivel(1);
         }
+        System.out.println("Ahora que has seleccionado tu arma estas listo para comenzar la lucha," +
+                " recuerda que te encontraras con diversos objetos\n que te ayudaran a sobrevivir." +
+                " Nada mas me queda desearte buena suerte, estare cuidando tu espalda si necesitas algun consejo ");
+        System.out.println("");
+        */
+
+        /*
+        Iterator it = zona.entrySet().iterator();
+        while (it.hasNext()){
+            Map.Entry e = (Map.Entry)it.next();
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        */
+        System.out.println("CAPITULO 1: ALCANTARILLAS");
+        TimeUnit.SECONDS.sleep(3);
+        while (true){
+            Scanner comando = new Scanner(System.in);
+            //LISTAR COMANDOS
+            String opcion1 = comando.nextLine();
+            String[] aux = opcion1.split(" ");
+            switch (aux[0]){
+                case "list":
+                    if (aux[1].equals("[inventory]")){
+                        if (user.getEquipaje().isEmpty()){
+                            System.out.println("No tienes nada en inventario");
+                        }
+                        else {
+                            System.out.println("LISTAR INVENTARIO");
+                        }
+                    }
+                    else if (aux[1].equals("[quests]")){
+                        mostrar(misiones);
+                        //System.out.println("LISTAR MISIONES");
+                    }
+                    break;
+                case "use":
+                    System.out.println("USAR OBJETO DEL INVENTARIO");
+                    break;
+                case "walk":
+                    if (aux[1].equals("[L]")){
+                        System.out.println("MOVERSE IZQUIERDA");
+                    }
+                    else if (aux[1].equals("[R]")){
+                        System.out.println("MOVERSE DERECHA");
+                    }
+                    else if (aux[1].equals("[U]")){
+                        System.out.println("MOVERSE ARRIBA");
+                    }
+                    else if (aux[1].equals("[D]")){
+                        System.out.println("MOVERSE ABAJO");
+                    }
+                    break;
+                case "lookat":
+                    System.out.println("LISTA ENEMIGOS");
+                    break;
+                case "pickup":
+                    System.out.println("RECOGER");
+                    break;
+                case "attack":
+                    System.out.println("ATACAR");
+                    break;
+                case "help":
+                    System.out.println("HELP");
+                    break;
+            }
+        }
+    }
+
+    private static void mostrar(Map aux){
+        Iterator it = aux.entrySet().iterator();
+        while (it.hasNext()){
+            Map.Entry e = (Map.Entry)it.next();
+
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+    }
 
 
         //Se le entregan la espada, el chaleco y las botas. Se le preguntara al jugador que quiere hacer con ellas
@@ -117,4 +206,3 @@ public class Main {
 
         //FIN.
     }
-}
