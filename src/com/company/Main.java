@@ -97,7 +97,7 @@ public class Main {
                     }
                     else if (aux[1].equals("[quests]")){
                         mostrar(misiones);
-                        //System.out.println("LISTAR MISIONES");
+                        System.out.println("LISTAR MISIONES");
                     }
                     break;
                 case "use":
