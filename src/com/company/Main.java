@@ -3,6 +3,7 @@ package com.company;
 import combate.Combate;
 import equipamento.Armas;
 import objetos.Llave;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import personajes.*;
 
 import java.util.*;
@@ -19,29 +20,68 @@ public class Main {
         Usuario user = new Usuario();
         user.setNombre(nombre);
         user.setSalud(1000);
-        //List<String> mapa = new ArrayList<>();
-        //Map<String, List<String>> mapa = new LinkedHashMap<String, List<String>>();
 
+        //DEFINIMOS MAPA
+
+        Map <String, String> mapa = new HashMap<String, String>();
+        mapa.put("L","Alcantarillas");
+        mapa.put("R","Ciudad Destruida");
+        mapa.put("U","Castillo Destruido");
+        mapa.put("D","Sala del Castillo Destruido");
 
         // DEFINIMOS ZONAS CON SUS ENEMIGOS
         Map<String, List> enemigos = new HashMap<String, List>();
-        enemigos.put("Alcantarillas",Arrays.asList("Cocodrilo","Lagarto Mayor","Serpiente"));
-        enemigos.put("Ciudad Destruida",Arrays.asList("Elementos","Ciudad","Destruida"));
-        enemigos.put("Castillo Destruido",Arrays.asList("Elementos","Castillo","Destruido"));
-        enemigos.put("Sala del Castillo Destruido",Arrays.asList("Elementos","Sala","Castillo","Destruido"));
+        enemigos.put("Alcantarillas",Arrays.asList("Cocodrilo (ID:L1)","Lagarto Mayor (ID:L2)"));
+        enemigos.put("Ciudad Destruida",Arrays.asList("Tortugas ancianas (ID:R1)","Lagarto Mutante (ID:R2)",
+                "Perro mutante (ID:R3)"));
+        enemigos.put("Castillo Destruido",Arrays.asList("Bandido (ID:U1)","Rebelde (ID:U2)",
+                "Mujerzuela (ID:U3)"));
+        enemigos.put("Sala del Castillo Destruido",Arrays.asList("Jefe rebelde (ID:D1)"));
 
         // DEFINIMOS ZONAS CON SUS MISIONES
-
+        /*
         Map <String,List> misiones = new HashMap<String, List>();
-        misiones.put("Alcantarillas", Arrays.asList("Encontrar un arma","Derrotar al Lagarto Anciano"+
+
+        misiones.put("Alcantarillas", Arrays.asList("Encontrar un arma","Derrotar al Lagarto mayor"+
                 "Encontrar chaleco de kevlar"));
+        misiones.put("Ciudad Destruida", Arrays.asList("Derrotar tortugas ancianas", "Derrotar lagarto mutante\n",
+                " Derrotar perro mutante"));
+        misiones.put("Castillo Destruido", Arrays.asList("Derrotar bandido","Derrotar rebelde",
+                "Derrotar mujerzuela", "Encontrar llave para abrir sala del castillo destruido"));
+        misiones.put("Sala del Castillo Destruido", Arrays.asList("Derrotar jefe rebelde"));
+        */
+
+        HashMap<String, ArrayList<String>> misiones = new HashMap<String, ArrayList<String>>();
+        ArrayList<String> misiones_alcantarillas = new ArrayList<String>();
+        misiones_alcantarillas.add("Encontrar un arma");
+        misiones_alcantarillas.add("Derrotar lagarto mayor");
+        misiones_alcantarillas.add("Encontrar chaleco de kevlar");
+        misiones.put("Alcantarillas", misiones_alcantarillas);
+
+        ArrayList<String> misiones_ciudad_destruida = new ArrayList<String>();
+        misiones_ciudad_destruida.add("Derrotar tortugas ancianas");
+        misiones_ciudad_destruida.add("Derrotar lagarto mutante");
+        misiones_ciudad_destruida.add("Derrotar perro mutante");
+        misiones.put("Ciudad Destruida", misiones_ciudad_destruida);
+
+        ArrayList<String> misiones_castillo_destruido = new ArrayList<String>();
+        misiones_castillo_destruido.add("Derrotar bandido");
+        misiones_castillo_destruido.add("Derrotar rebelde");
+        misiones_castillo_destruido.add("Derrotar mujerzuela");
+        misiones_castillo_destruido.add("Encontrar llave para abrir sala del castillo destruido");
+        misiones.put("Castillo Destruido", misiones_castillo_destruido);
+
+        ArrayList<String> misiones_sala_castillo_destruido = new ArrayList<String>();
+        misiones_sala_castillo_destruido.add("Derrotar jefe rebelde");
+        misiones.put("Sala del Castillo Destruido",misiones_sala_castillo_destruido);
+
 
         //Nivel 1 -> Alcantarillas
         System.out.println(nombre+" eres la ultima persona en la tierra. Has despertado de un largo sueño y la humanidad"+
                 " como la conoces ha llegado a su fin.\n" +
                 "Soy el perro de tu ta-tara-abuelo y he venido"+
                 " aquí para aconsejarte acerca de tu futuro.\nNo tienes provisiones y tienes que dejar estas" +
-                " alcantarillas si quieres sobrevivir.\n Adelante, que comience tu aventura!");
+                " alcantarillas si quieres sobrevivir.\n Adelante, que comience tu aventura!\n");
         /*
         System.out.println("1: Espada del viejo mundo"); // 200 de daño
         System.out.println("2: Hacha del destino final"); //150 de daño y 100 de armadura
@@ -70,16 +110,6 @@ public class Main {
                 " Nada mas me queda desearte buena suerte, estare cuidando tu espalda si necesitas algun consejo ");
         System.out.println("");
         */
-
-        /*
-        Iterator it = zona.entrySet().iterator();
-        while (it.hasNext()){
-            Map.Entry e = (Map.Entry)it.next();
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
-        */
-        System.out.println("CAPITULO 1: ALCANTARILLAS");
-        TimeUnit.SECONDS.sleep(3);
         while (true){
             Scanner comando = new Scanner(System.in);
             //LISTAR COMANDOS
@@ -93,32 +123,35 @@ public class Main {
                         }
                         else {
                             System.out.println("LISTAR INVENTARIO");
-
-
                         }
                     }
                     else if (aux[1].equals("[quests]")){
-                        mostrar(misiones);
-                        System.out.println("LISTAR MISIONES");
-
-
+                        user.setUbicacion("L");
+                        System.out.println(misiones.get("Alcantarillas"));
                     }
                     break;
                 case "use":
                     System.out.println("USAR OBJETO DEL INVENTARIO");
                     break;
                 case "walk":
-                    if (aux[1].equals("[L]")){
-                        System.out.println("MOVERSE IZQUIERDA");
+                    if (aux[1].equals("[L]")){ //alcantarillas
+                        user.setUbicacion(mapa.get("L"));
+                        descripcion_zona(user.getUbicacion(),user,enemigos);
+
                     }
-                    else if (aux[1].equals("[R]")){
-                        System.out.println("MOVERSE DERECHA");
+                    else if (aux[1].equals("[R]")){ //ciudad destruida
+                        user.setUbicacion(mapa.get("R"));
+                        descripcion_zona(user.getUbicacion(),user,enemigos);
+
                     }
-                    else if (aux[1].equals("[U]")){
-                        System.out.println("MOVERSE ARRIBA");
+                    else if (aux[1].equals("[U]")){ //castillo destruido
+                        user.setUbicacion(mapa.get("U"));
+                        descripcion_zona(user.getUbicacion(),user,enemigos);
                     }
-                    else if (aux[1].equals("[D]")){
-                        System.out.println("MOVERSE ABAJO");
+                    else if (aux[1].equals("[D]")){ //sala castillo destruido
+                        // if user.getEquipaje().contains(llave para entrar al castillo)
+                        user.setUbicacion(mapa.get("D"));
+                        descripcion_zona(user.getUbicacion(),user,enemigos);
                     }
                     break;
                 case "lookat":
@@ -131,18 +164,46 @@ public class Main {
                     System.out.println("ATACAR");
                     break;
                 case "help":
-                    System.out.println("HELP");
+                    System.out.println("list [inventory|quests]\n");
+                    System.out.println("use [itemId]\n");
+                    System.out.println("walk [L|R|U|D]\n");
+                    System.out.println("pickup [itemId]\n");
+                    System.out.println("attack [enemyId]");
                     break;
             }
         }
     }
 
-    private static void mostrar(Map aux){
+    private static void descripcion_zona(String zona, Usuario user, Map<String, List> hashmap){
+        if (zona.equals("Alcantarillas")){
+            System.out.println("Estas en las alcantarillas, por residuos redioactivos tu salud disminuye en 300");
+            System.out.println("Cantidad de enemigos:");
+            System.out.println(hashmap.get("Alcantarillas").size());
+            user.restarSalud(30);
+        }
+        else if (zona.equals("Ciudad Destruida")){
+            System.out.println("Estas en la ciudad destruida, tu daño se ve reducido en 50 por niebla acida");
+            System.out.println("Cantidad de enemigos:");
+            System.out.println(hashmap.get("Ciudad Destruida").size());
+
+        }
+        else if (zona.equals("Castillo Destruido")){
+            System.out.println("Estas en el Castillo Destruido");
+            System.out.println("Cantidad de enemigos:");
+            System.out.println(hashmap.get("Castillo Destruido").size());
+
+        }
+        else if (zona.equals("Sala del Castillo Destruido")){
+            System.out.println("Estas en la sala del Castillo Destruido, tus habilidades estan al 100%, a por el " +
+                    " jefe final!");
+        }
+
+    }
+    private static void contar(Map aux){
         Iterator it = aux.entrySet().iterator();
+
         while (it.hasNext()){
             Map.Entry e = (Map.Entry)it.next();
-
-            System.out.println(e.getKey() + " " + e.getValue());
         }
     }
 

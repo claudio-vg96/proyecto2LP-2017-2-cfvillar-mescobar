@@ -9,6 +9,7 @@ public abstract class Personaje {
     private int salud;
     private Armas arma;
     private int nivel;
+    private String ubicacion;
     ArrayList<Pocion> pociones; //FALTA METODOS PARA PASARLO A PRIVATE
 
     public int getNivel() {
@@ -19,6 +20,10 @@ public abstract class Personaje {
         this.salud += 150;
         this.nivel++;
     }
+
+    public void setUbicacion(String u){ this.ubicacion = u; }
+
+    public String getUbicacion(){ return ubicacion; }
 
     public ArrayList<Pocion> getPociones() {
         return pociones;
@@ -40,9 +45,9 @@ public abstract class Personaje {
         return salud;
     }
 
-    public void restarSalud(int daño){
-        if (daño > 0){
-            this.salud -= daño;
+    public void restarSalud(int dano){
+        if (dano > 0){
+            this.salud -= dano;
         }
     }
 
