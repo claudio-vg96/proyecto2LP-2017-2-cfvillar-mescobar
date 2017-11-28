@@ -20,7 +20,7 @@ public class Main {
         Usuario user = new Usuario();
         user.setNombre(nombre);
         user.setSalud(1000);
-
+        user.setUbicacion("L"); //ubicacion inicial
         //DEFINIMOS MAPA
 
         Map <String, String> mapa = new HashMap<String, String>();
@@ -126,8 +126,10 @@ public class Main {
                         }
                     }
                     else if (aux[1].equals("[quests]")){
-                        user.setUbicacion("L");
-                        System.out.println(misiones.get("Alcantarillas"));
+                        System.out.println("Ubicacion:");
+                        System.out.println(user.getUbicacion());
+                        System.out.println("Misiones:");
+                        System.out.println(misiones.get(user.getUbicacion()));
                     }
                     break;
                 case "use":
@@ -156,6 +158,14 @@ public class Main {
                     break;
                 case "lookat":
                     System.out.println("LISTA ENEMIGOS");
+                    if (aux[1].equals("[enemies]")){
+                        System.out.println("Enemigos:");
+                        System.out.println(enemigos.get(user.getUbicacion()));
+                    }
+                    else if (aux[1].equals("[items]")){
+
+                    }
+
                     break;
                 case "pickup":
                     System.out.println("RECOGER");
