@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Npc extends Personaje{
 
     private int resistencia;
+    private String id;
 
     public Npc(){
         pociones = new ArrayList<>();
@@ -29,7 +30,7 @@ public class Npc extends Personaje{
         this.pociones.add(pocion1);
 
         this.setNivel(level);
-        this.setSalud(90 + level*10);
+        this.setSalud(300 + level*10);
         resistencia = level;
 
         Armas arma_generica = new Armas(level);
@@ -58,4 +59,9 @@ public class Npc extends Personaje{
     public int getResistencia() {
         return resistencia;
     }
+
+    public void setID(String id){this.id = id;}
+
+    public String getID(){ return id;}
+
 }

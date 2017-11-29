@@ -10,20 +10,24 @@ public abstract class Personaje {
     private Armas arma;
     private int nivel;
     private String ubicacion;
-    ArrayList<Pocion> pociones; //FALTA METODOS PARA PASARLO A PRIVATE
+    ArrayList<Pocion> pociones;
 
     public int getNivel() {
         return nivel;
     }
 
-    public void subirNivel(){
+    public void subirNivel() {
         this.salud += 150;
         this.nivel++;
     }
 
-    public void setUbicacion(String u){ this.ubicacion = u; }
+    public void setUbicacion(String u) {
+        this.ubicacion = u;
+    }
 
-    public String getUbicacion(){ return ubicacion; }
+    public String getUbicacion() {
+        return ubicacion;
+    }
 
     public ArrayList<Pocion> getPociones() {
         return pociones;
@@ -33,7 +37,7 @@ public abstract class Personaje {
         this.nivel = nivel;
     }
 
-    public void setNombre(String name){
+    public void setNombre(String name) {
         this.nombre = name;
     }
 
@@ -45,8 +49,8 @@ public abstract class Personaje {
         return salud;
     }
 
-    public void restarSalud(int dano){
-        if (dano > 0){
+    public void restarSalud(int dano) {
+        if (dano > 0) {
             this.salud -= dano;
         }
     }

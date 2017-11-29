@@ -31,7 +31,7 @@ public class Armas implements Equipamento {
 
     public Armas (int level){
         this.setNivel(level);
-        dano = 10 + level;
+        dano = 100 + level;
     }
 
     public void setDano(int dano){

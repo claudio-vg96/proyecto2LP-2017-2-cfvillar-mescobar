@@ -5,5 +5,4 @@ public interface Items {
     String getDescripcion();
     void setNombre(String nombre);
     String getNombre();
-
 }

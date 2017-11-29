@@ -1,9 +1,11 @@
 package objetos;
 
-public class Llave implements Items {
+import personajes.Usuario;
+
+public class Amuleto_Dano implements Items {
     private String nombre;
     private String descripcion;
-    private String id;
+    Usuario user;
     @Override
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -22,8 +24,7 @@ public class Llave implements Items {
     @Override
     public String getNombre() { return nombre; }
 
-    public void setID(String id) { this.id = id; }
-
-    public String getID() { return id; }
-
+    public Amuleto_Dano (Usuario user){
+        user.getArma().setDano(user.getArma().getDano()+10);
+    }
 }
