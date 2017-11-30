@@ -1,14 +1,17 @@
 package combate;
 
+import objetos.Items;
 import personajes.*;
 import pocion.Pocion;
+
 import java.util.Iterator;
+import java.util.Map;
 
 public class Combate {
 
     private boolean resultado_pelea;
 
-    public Combate(Usuario usuario, Npc npc){
+    public Combate(Usuario usuario, Npc npc, Map<String, Items> npc_items) {
         int potencia_pocion_npc = npc.getPociones().get(0).getPotencia();
         Iterator <Pocion> iterador = npc.getPociones().iterator();
         System.out.println("Empieza el combate entre " + usuario.getNombre()+ " y " + npc.getNombre());
@@ -60,6 +63,23 @@ public class Combate {
             }
 
         }
+
+        if (npc.getSalud()<= 0){
+            if (npc.getNombre().equals("Perro Mutante")){
+                System.out.println("Enhorabuena! has recibido la llave para entrar al castillo");
+                usuario.agregarEquipaje(npc_items.get(npc.getID()));
+            }
+            else if (npc.getNombre().equals("Mujerzuela")){
+                System.out.println("Enhorabuena! has recibido la llave para entrar a la sala del castillo");
+                usuario.agregarEquipaje(npc_items.get(npc.getID()));
+            }
+            else if (npc.getNombre().equals("Jefe Rebelde")){
+                System.out.println("Derrotaste al Jefe Rebelde, has ganado la beta de nuestro juego" +
+                        " felicidades! y gracias por probar nuestro juego");
+            }
+
+        }
+
 
     }
     public boolean getResultado(){
